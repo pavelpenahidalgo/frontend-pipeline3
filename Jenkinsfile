@@ -1,16 +1,20 @@
 pipeline {
-    agent {
-        docker { image 'node:16-alpine'}
-    }
+    agent any
 
     stages {
         stage ('Instalar dependencias...') {
+            agent {
+                docker { image 'node:16-alpine'}
+            }
             steps {
                 sh 'npm install'
             }
         }
 
         stage ('Construir proyecto con archivos estaticos...') {
+            agent {
+                docker { image 'node:16-alpine'}
+            }
             steps {
                 sh 'npm run build'
             }
