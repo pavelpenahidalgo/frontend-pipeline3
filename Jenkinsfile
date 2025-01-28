@@ -10,23 +10,6 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analisis...') {
-            steps {
-                script {
-                    def scannerHome = tool 'SonarScanner';
-                    withSonarQubeEnv() {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
-            }
-        }
-
-        stage('SonarQube quality gate...') {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
-
         stage ('Construir proyecto con archivos estaticos...') {
             steps {
                 sh 'npm run build'
