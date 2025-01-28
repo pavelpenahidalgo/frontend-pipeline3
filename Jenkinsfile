@@ -20,9 +20,25 @@ pipeline {
             }
         }
 
+        stage('Validar imagen de AWS ...') {
+            agent {
+                docker { 
+                    image 'amazon/aws-cli:2.23.7'
+                    args '--entrypoint ""'
+                }
+            }
+            steps {
+                echo "Usando aws CLI.."
+                sh 'aws --version'
+            }
+        }
+
         stage('Validar conexion AWS ...') {
             agent {
-                docker { image 'amazon/aws-cli:2.23.7'}
+                docker { 
+                    image 'amazon/aws-cli:2.23.7'
+                    args '--entrypoint ""'
+                }
             }
             steps {
                 withAWS(credentials: 'aws-credentials-s3', region: 'us-east-1') {
@@ -32,12 +48,14 @@ pipeline {
                     }
                 }
             }
-
         }
 
         stage('Subir proyecto al bucket s3 AWS ...') {
             agent {
-                docker { image 'amazon/aws-cli:2.23.7'}
+                docker {
+                    image 'amazon/aws-cli:2.23.7'
+                    args '--entrypoint ""'
+                }
             }
             steps {
                 withAWS(credentials: 'aws-credentials-s3', region: 'us-east-1') {
