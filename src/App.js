@@ -17,7 +17,7 @@ function App() {
         >
           Learn React
         </a>
-        <div>PROYECTO FRONT PARA PIPELINE VERSION 1.2</div>
+        <div>PROYECTO FRONT PARA PIPELINE VERSION 1.3</div>
       </header>
     </div>
   );
