@@ -66,7 +66,7 @@ pipeline {
 
                         echo "Ultima carpeta del bucket backup: ${ultimaCarpetaDeBackup}"
 
-                        def baseVersion = 'VERSION_1.0'
+                        def baseVersion = 'VERSION_1.20'
 
                         if (ultimaCarpetaDeBackup) {
                             def currentVersion = ultimaCarpetaDeBackup.replace('VERSION_','').replace('/', '')
