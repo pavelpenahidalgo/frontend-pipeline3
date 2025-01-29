@@ -84,7 +84,7 @@ pipeline {
 
                         echo "Subiendo los archivos al bucket s3 en la carpeta ${baseVersion}..."
                         sh """
-                            aws s3 sync build/ s3://bucket-codigo-backup/PAVELPH/${baseVersion}/ --delete
+                            aws s3 sync build/ s3://bucket-codigo-pavel/PAVELPH/${baseVersion}/ --delete
                         """
                     }                   
                 }
@@ -104,7 +104,7 @@ pipeline {
                     script {
                         echo "Subiendo los archivos al bucket s3..."
                         sh '''
-                            aws s3 sync build/ s3://bucket-codigo-front --delete
+                            aws s3 sync build/ s3://bucket-codigo-pavel --delete
                         '''
                     }                   
                 }
