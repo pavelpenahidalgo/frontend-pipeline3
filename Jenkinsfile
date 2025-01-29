@@ -84,7 +84,7 @@ pipeline {
 
                         echo "Subiendo los archivos al bucket s3 en la carpeta ${baseVersion}..."
                         sh """
-                            aws s3 sync build/ s3://bucket-codigo-backup/fernando/${baseVersion}/ --delete
+                            aws s3 sync build/ s3://bucket-codigo-backup/PAVELPH/${baseVersion}/ --delete
                         """
                     }                   
                 }
