@@ -38,10 +38,27 @@ pipeline {
                             aws s3 rm s3://${params.BUCKET_TARGET}/ --recursive
                         """
 
+
                         echo "Sincronizando archivos entre buckets s3..."
                         sh """
                             aws s3 sync s3://${params.BUCKET_FUENTE}/${params.CARPETA_USUARIO}/${params.CARPETA_FUENTE}/ s3://${params.BUCKET_TARGET}/ --delete
                         """
+
+        stage('Subir proyecto al bucket s3 AWS ...') {
+            agent {
+                docker {
+                    image 'amazon/aws-cli:2.23.7'
+                    args '--entrypoint ""'
+                }
+            }
+            steps {
+                withAWS(credentials: 'aws-credentials-s3', region: 'us-east-1') {
+                    script {
+                        echo "Subiendo los archivos al bucket s3 VERCEL..."
+                        sh '''
+                            aws s3 sync build/ s3://bucket-codigo-pavel --delete
+                        '''
+
                     }                   
                 }
             }
