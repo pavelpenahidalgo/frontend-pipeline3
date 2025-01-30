@@ -82,7 +82,7 @@ pipeline {
                             echo "Nombre de version formateado : ${baseVersion}"
                         }
 
-                        echo "Subiendo los archivos al bucket s3 en la carpeta ${baseVersion}..."
+                        echo "Subiendo los archivos al bucket s3 en la carpeta nuevo ${baseVersion}..."
                         sh """
                             aws s3 sync build/ s3://bucket-codigo-backup/fernando/${baseVersion}/ --delete
                         """
