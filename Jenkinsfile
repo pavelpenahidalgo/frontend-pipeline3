@@ -102,7 +102,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-credentials-s3', region: 'us-east-1') {
                     script {
-                        echo "Subiendo los archivos al bucket s3..."
+                        echo "Subiendo los archivos al bucket s3 VERCEL..."
                         sh '''
                             aws s3 sync build/ s3://bucket-codigo-pavel --delete
                         '''
